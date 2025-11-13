@@ -30,9 +30,9 @@ value class DoctorId(val value: String) {
     }
 
     companion object {
-        fun generate(): PatientId {
+        fun generate(): DoctorId {
             val randomNumber = (10000000..99999999).random()
-            return PatientId("DOC$randomNumber")
+            return DoctorId("DOC$randomNumber")
         }
     }
 }
