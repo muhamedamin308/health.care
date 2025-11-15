@@ -37,9 +37,6 @@ data class User(
 
         private fun generateUserId(): String = "USR${System.currentTimeMillis()}"
 
-        private fun hashPassword(password: String): String = password.hashCode().toString()
+        fun hashPassword(password: String): String = password.hashCode().toString()
     }
-
-    fun verifyPassword(password: String) =
-        hashPassword(password) == passwordHash
 }

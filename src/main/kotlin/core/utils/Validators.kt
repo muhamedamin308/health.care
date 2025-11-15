@@ -1,6 +1,7 @@
 package core.utils
 
 import core.functional.Result
+import domain.entities.User.Companion.hashPassword
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
@@ -112,6 +113,9 @@ fun <T> validate(block: ValidationBuilders<T>.() -> Unit): (T) -> Result<T> {
     builder.block()
     return { value -> builder.validate(value) }
 }
+
+fun verifyPassword(password: String, userRealHashedPassword: String) =
+    hashPassword(password) == userRealHashedPassword
 
 @OptIn(ExperimentalContracts::class)
 fun <T> requireNotNull(value: T?, message: String): T {
