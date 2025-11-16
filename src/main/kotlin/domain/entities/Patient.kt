@@ -20,7 +20,7 @@ data class Patient(
     val phoneNumber: PhoneNumber,
     val email: Email,
     val address: Address,
-    val emergencyContent: EmergencyContact,
+    val emergencyContact: EmergencyContact,
     val insurance: InsuranceInfo? = null,
     val allergies: List<String> = emptyList(),
     val chronicConditions: List<String> = emptyList(),
@@ -77,7 +77,7 @@ data class Patient(
                 phoneNumber = phone,
                 email = email,
                 address = address,
-                emergencyContent = emergencyContact
+                emergencyContact = emergencyContact
             )
 
             return validator(patient)
