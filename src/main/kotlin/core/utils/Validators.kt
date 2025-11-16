@@ -9,10 +9,11 @@ import kotlin.contracts.contract
 @JvmInline
 value class PatientId(val value: String) {
     init {
-        require(value.matches(Regex("^PAT\\\\d{8}\$"))) {
-            "Patient id must match pattern PAT########"
+        require(value.matches(Regex("^PAT\\d{8}$"))) {
+            "PatientId must match pattern PAT########"
         }
     }
+
 
     companion object {
         fun generate(): PatientId {
@@ -25,14 +26,14 @@ value class PatientId(val value: String) {
 @JvmInline
 value class DoctorId(val value: String) {
     init {
-        require(value.matches(Regex("^APT\\d{10}$"))) {
-            "Doctor id must match pattern DOC########"
+        require(value.matches(Regex("^DOC\\d{6}$"))) {
+            "DoctorId must match pattern DOC######"
         }
     }
 
     companion object {
         fun generate(): DoctorId {
-            val randomNumber = (10000000..99999999).random()
+            val randomNumber = (100000..999999).random()
             return DoctorId("DOC$randomNumber")
         }
     }
@@ -42,7 +43,7 @@ value class DoctorId(val value: String) {
 value class AppointmentId(val value: String) {
     init {
         require(value.matches(Regex("^APT\\d{10}$"))) {
-            "Appointment Id must match pattern APT###########"
+            "AppointmentId must match pattern APT##########"
         }
     }
 
@@ -53,6 +54,7 @@ value class AppointmentId(val value: String) {
         }
     }
 }
+
 
 @JvmInline
 value class PrescriptionId(val value: String) {

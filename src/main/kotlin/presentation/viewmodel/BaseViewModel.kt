@@ -12,7 +12,7 @@ import presentation.state.UiEvent
 import presentation.state.UiState
 
 abstract class BaseViewModel {
-    protected val viewModelScope: CoroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    protected val viewModelScope: CoroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
     protected val _uiEvents = MutableSharedFlow<UiEvent>()
     val uiEvent: SharedFlow<UiEvent> = _uiEvents.asSharedFlow()
 

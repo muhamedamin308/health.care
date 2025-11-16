@@ -2,7 +2,7 @@ package core.functional
 
 data class Money(
     val amount: Double,
-    val currency: Currency = Currency.USD,
+    val currency: Currency = Currency.EGP,
 ) {
     init {
         require(amount >= 0) {
