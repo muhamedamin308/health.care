@@ -5,6 +5,7 @@ import core.functional.Specification
 import core.utils.DomainError
 import java.text.SimpleDateFormat
 import java.util.Date
+import kotlin.random.Random
 
 inline fun <R> R?.toResult(error: () -> DomainError): Result<R> =
     this?.let { Result.success(it) } ?: Result.failure(error())
@@ -25,3 +26,5 @@ fun Long.toFormattedDate(): String {
     return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date)
 }
 
+fun ClosedFloatingPointRange<Double>.random(): Double =
+    Random.nextDouble(start, endInclusive)
